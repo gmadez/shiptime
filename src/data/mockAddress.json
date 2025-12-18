@@ -1,0 +1,70 @@
+{
+  "html_attributions": [],
+  "result": {
+    "address_components": [
+      {
+        "long_name": "5434",
+        "short_name": "5434",
+        "types": ["street_number"]
+      },
+      {
+        "long_name": "Sweetgrass Gate",
+        "short_name": "Sweetgrass Gate",
+        "types": ["route"]
+      },
+      {
+        "long_name": "East Credit",
+        "short_name": "East Credit",
+        "types": ["neighborhood", "political"]
+      },
+      {
+        "long_name": "Mississauga",
+        "short_name": "Mississauga",
+        "types": ["locality", "political"]
+      },
+      {
+        "long_name": "Mississauga",
+        "short_name": "Mississauga",
+        "types": ["administrative_area_level_3", "political"]
+      },
+      {
+        "long_name": "Regional Municipality of Peel",
+        "short_name": "Regional Municipality of Peel",
+        "types": ["administrative_area_level_2", "political"]
+      },
+      {
+        "long_name": "Ontario",
+        "short_name": "ON",
+        "types": ["administrative_area_level_1", "political"]
+      },
+      {
+        "long_name": "Canada",
+        "short_name": "CA",
+        "types": ["country", "political"]
+      },
+      {
+        "long_name": "L5V 2N1",
+        "short_name": "L5V 2N1",
+        "types": ["postal_code"]
+      }
+    ],
+    "formatted_address": "5434 Sweetgrass Gate, Mississauga, ON L5V 2N1, Canada",
+    "geometry": {
+      "location": {
+        "lat": 43.594434,
+        "lng": -79.6876972
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 43.5958665802915,
+          "lng": -79.68625876970849
+        },
+        "southwest": {
+          "lat": 43.59316861970851,
+          "lng": -79.68895673029149
+        }
+      }
+    }
+  },
+  "status": "OK"
+}
