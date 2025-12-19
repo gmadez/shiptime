@@ -13,26 +13,26 @@ export const getRates = async (
   // build ShippingRequest from ShippingDetails
   const shippingRequest: ShippingRequest = {
     from: {
-      companyName: "Sender",
-      attention: "Sender Name",
-      phone: "123-456-7890",
-      state: "ON",
+      companyName: details.originCompanyName,
+      attention: details.originAttention,
+      phone: details.originPhoneNumber,
+      state: details.originStateOrProvince,
       streetAddress: details.originAddress,
       city: details.originCity,
       countryCode: details.originCountry,
       postalCode: details.originPostalCode,
     },
     to: {
-      companyName: "Sender",
-      attention: "Sender Name",
-      phone: "123-456-7890",
-      state: "ON",
+      companyName: details.destinationCompanyName,
+      attention: details.destinationAttention,
+      phone: details.destinationPhoneNumber,
+      state: details.destinationStateOrProvince,
       streetAddress: details.destinationAddress,
       city: details.destinationCity,
       countryCode: details.destinationCountry,
       postalCode: details.destinationPostalCode,
     },
-    packageType: details.packageType || "PACKAGE",
+    packageType: details.packageType,
     lineItems: [
       {
         length: details.length,

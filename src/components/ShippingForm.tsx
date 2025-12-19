@@ -128,20 +128,17 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
     if (!formData.weight || parseFloat(formData.weight) <= 0) {
       newErrors.weight = "Weight is required";
     }
-    if (!formData.originCompanyName.trim()) {
-      newErrors.originCompanyName = "Origin company name is required";
-    }
-    if (!formData.originAttention.trim()) {
-      newErrors.originAttention = "Origin attention is required";
+    if (formData.originAttention.trim().length < 2) {
+      newErrors.originAttention = "Attention is required";
     }
     if (!formData.originPhoneNumber.trim()) {
-      newErrors.originPhoneNumber = "Origin phone number is required";
+      newErrors.originPhoneNumber = "Phone number is required";
     }
     if (!formData.originAddress.trim()) {
-      newErrors.originAddress = "Origin address is required";
+      newErrors.originAddress = "Address is required";
     }
     if (!formData.originCity.trim()) {
-      newErrors.originCity = "Origin city is required";
+      newErrors.originCity = "City is required";
     }
     if (!formData.originPostalCode.trim()) {
       newErrors.originPostalCode = "Postal code is required";
@@ -152,20 +149,17 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
     if (!formData.originCountry.trim()) {
       newErrors.originCountry = "Country is required";
     }
-    if (!formData.destinationCompanyName.trim()) {
-      newErrors.destinationCompanyName = "Destination company name is required";
-    }
-    if (!formData.destinationAttention.trim()) {
-      newErrors.destinationAttention = "Destination attention is required";
+    if (formData.destinationAttention.trim().length < 2) {
+      newErrors.destinationAttention = "Attention is required";
     }
     if (!formData.destinationPhoneNumber.trim()) {
-      newErrors.destinationPhoneNumber = "Destination phone number is required";
+      newErrors.destinationPhoneNumber = "Phone number is required";
     }
     if (!formData.destinationAddress.trim()) {
-      newErrors.destinationAddress = "Destination address is required";
+      newErrors.destinationAddress = "Address is required";
     }
     if (!formData.destinationCity.trim()) {
-      newErrors.destinationCity = "Destination city is required";
+      newErrors.destinationCity = "City is required";
     }
     if (!formData.destinationPostalCode.trim()) {
       newErrors.destinationPostalCode = "Postal code is required";
@@ -240,7 +234,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
         </div>
         <div className="grid grid-cols-3 gap-4">
           <div className="space-y-2">
-            <Label htmlFor="length">Length (in)</Label>
+            <Label htmlFor="length">Length (in) *</Label>
             <Input
               id="length"
               type="number"
@@ -257,7 +251,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="width">Width (in)</Label>
+            <Label htmlFor="width">Width (in) *</Label>
             <Input
               id="width"
               type="number"
@@ -274,7 +268,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
             )}
           </div>
           <div className="space-y-2">
-            <Label htmlFor="height">Height (in)</Label>
+            <Label htmlFor="height">Height (in) *</Label>
             <Input
               id="height"
               type="number"
@@ -302,7 +296,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
           <h3 id="package-weight-legend" className="font-semibold text-foreground">Package Weight</h3>
         </div>
         <div className="max-w-xs">
-          <Label htmlFor="weight">Weight (lbs)</Label>
+          <Label htmlFor="weight">Weight (lbs) *</Label>
           <Input
             id="weight"
             type="number"
@@ -336,6 +330,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
                 id="originCompanyName"
                 placeholder="Company Name"
                 value={formData.originCompanyName}
+                maxLength={40}
                 onChange={(e) => handleInputChange("originCompanyName", e.target.value)}
                 className={cn(errors.originCompanyName && "border-destructive")}
                 aria-invalid={!!errors.originCompanyName}
@@ -346,7 +341,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
               )}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="originAttention">Attention</Label>
+              <Label htmlFor="originAttention">Attention *</Label>
               <Input
                 id="originAttention"
                 placeholder="Sender's Name"
@@ -364,10 +359,12 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
 
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="originPhoneNumber">Phone Number</Label>
+              <Label htmlFor="originPhoneNumber">Phone Number *</Label>
               <Input
                 id="originPhoneNumber"
-                placeholder="(123) 456-7890"
+                type="tel"
+                placeholder="123 456 7890"
+                maxLength={15}
                 value={formData.originPhoneNumber}
                 onChange={(e) => handleInputChange("originPhoneNumber", e.target.value)}
                 className={cn(errors.originPhoneNumber && "border-destructive")}
@@ -381,7 +378,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="originAddress">Street Address</Label>
+            <Label htmlFor="originAddress">Street Address *</Label>
             <AddressAutocomplete
               id="originAddress"
               value={formData.originAddress}
@@ -398,11 +395,12 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="originCity">City</Label>
+              <Label htmlFor="originCity">City *</Label>
               <Input
                 id="originCity"
                 placeholder="Toronto"
                 value={formData.originCity}
+                maxLength={40}
                 onChange={(e) => handleInputChange("originCity", e.target.value)}
                 className={cn(errors.originCity && "border-destructive")}
                 aria-invalid={!!errors.originCity}
@@ -413,11 +411,12 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
               )}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="originPostalCode">Postal Code</Label>
+              <Label htmlFor="originPostalCode">Postal Code *</Label>
               <Input
                 id="originPostalCode"
                 placeholder="K1A 0B1"
                 value={formData.originPostalCode}
+                maxLength={10}
                 onChange={(e) => handleInputChange("originPostalCode", e.target.value)}
                 className={cn(errors.originPostalCode && "border-destructive")}
                 aria-invalid={!!errors.originPostalCode}
@@ -430,7 +429,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="originStateOrProvince">State or Province</Label>
+              <Label htmlFor="originStateOrProvince">State or Province *</Label>
               <Input
                 id="originStateOrProvince"
                 placeholder="Ontario"
@@ -446,7 +445,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="originCountry">Country</Label>
+              <Label htmlFor="originCountry">Country *</Label>
               <Input
                 id="originCountry"
                 placeholder="Canada"
@@ -490,11 +489,12 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
               )}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="destinationAttention">Attention</Label>
+              <Label htmlFor="destinationAttention">Attention *</Label>
               <Input
                 id="destinationAttention"
                 placeholder="Recipient's Name"
                 value={formData.destinationAttention}
+                maxLength={40}
                 onChange={(e) => handleInputChange("destinationAttention", e.target.value)}
                 className={cn(errors.destinationAttention && "border-destructive")}
                 aria-invalid={!!errors.destinationAttention}
@@ -508,10 +508,12 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
 
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="destinationPhoneNumber">Phone Number</Label>
+              <Label htmlFor="destinationPhoneNumber">Phone Number *</Label>
               <Input
                 id="destinationPhoneNumber"
-                placeholder="(123) 456-7890"
+                type="tel"
+                placeholder="123 456 7890"
+                maxLength={15}
                 value={formData.destinationPhoneNumber}
                 onChange={(e) => handleInputChange("destinationPhoneNumber", e.target.value)}
                 className={cn(errors.destinationPhoneNumber && "border-destructive")}
@@ -525,7 +527,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="destinationAddress">Street Address</Label>
+            <Label htmlFor="destinationAddress">Street Address *</Label>
             <AddressAutocomplete
               id="destinationAddress"
               placeholder="Start typing an address..."
@@ -542,7 +544,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="destinationCity">City</Label>
+              <Label htmlFor="destinationCity">City *</Label>
               <Input
                 id="destinationCity"
                 placeholder="Vancouver"
@@ -557,7 +559,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
               )}
             </div>
             <div className="space-y-2">
-              <Label htmlFor="destinationPostalCode">Postal Code</Label>
+              <Label htmlFor="destinationPostalCode">Postal Code *</Label>
               <Input
                 id="destinationPostalCode"
                 placeholder="K1A 0B1"
@@ -575,7 +577,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
 
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="destinationStateOrProvince">State or Province</Label>
+              <Label htmlFor="destinationStateOrProvince">State or Province *</Label>
               <Input
                 id="destinationStateOrProvince"
                 placeholder="Ontario"
@@ -591,7 +593,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="destinationCountry">Country</Label>
+              <Label htmlFor="destinationCountry">Country *</Label>
               <Input
                 id="destinationCountry"
                 placeholder="Canada"
