@@ -185,11 +185,8 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form data submitted:', formData);
 
     if (!validateForm()) return;
-
-    console.log('Form data submitted:', formData, 'Shipping date:', date);
 
     onSubmit({
       length: parseFloat(formData.length),

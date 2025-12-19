@@ -6,6 +6,11 @@ import { RateResults } from "@/components/RateResults";
 import { LabelGenerator } from "@/components/LabelGenerator";
 import { type ShippingDetails, type ShippingRate } from "@/net/shippingRatesTypes";
 import { getRates, generateMockRates } from "@/net/getShippingRates";
+import {
+  APIProvider,
+} from '@vis.gl/react-google-maps';
+
+const API_KEY = "AIzaSyBUFQfIkLM87Kw65YKfgBx70nA9NpCJzwY";
 
 type AppStep = "form" | "results" | "label";
 
@@ -147,7 +152,11 @@ const Index = () => {
                     Fill in your package information and addresses to compare rates
                   </p>
                 </div>
+                <APIProvider
+      apiKey={API_KEY}
+      solutionChannel='GMP_devsite_samples_v3_rgmautocomplete'>
                 <ShippingForm onSubmit={handleFormSubmit} isLoading={isLoading} initialValues={shippingDetails} />
+                </APIProvider>
               </motion.div>
             )}
 
