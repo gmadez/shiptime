@@ -10,7 +10,7 @@ import {
   APIProvider,
 } from '@vis.gl/react-google-maps';
 
-const API_KEY = "AIzaSyBUFQfIkLM87Kw65YKfgBx70nA9NpCJzwY";
+const API_KEY = "";
 
 type AppStep = "form" | "results" | "label";
 
