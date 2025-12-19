@@ -29,10 +29,18 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
     width: initialValues?.width?.toString() ?? "",
     height: initialValues?.height?.toString() ?? "",
     weight: initialValues?.weight?.toString() ?? "",
+    originCompanyName: initialValues?.originCompanyName ?? "",
+    originAttention: initialValues?.originAttention ?? "",
+    originStateOrProvince: initialValues?.originStateOrProvince ?? "",
+    originPhoneNumber: initialValues?.originPhoneNumber ?? "",
     originAddress: initialValues?.originAddress ?? "",
     originCity: initialValues?.originCity ?? "",
     originPostalCode: initialValues?.originPostalCode ?? "",
     originCountry: initialValues?.originCountry ?? "",
+    destinationCompanyName: initialValues?.destinationCompanyName ?? "",
+    destinationAttention: initialValues?.destinationAttention ?? "",
+    destinationStateOrProvince: initialValues?.destinationStateOrProvince ?? "",
+    destinationPhoneNumber: initialValues?.destinationPhoneNumber ?? "",
     destinationAddress: initialValues?.destinationAddress ?? "",
     destinationCity: initialValues?.destinationCity ?? "",
     destinationPostalCode: initialValues?.destinationPostalCode ?? "",
@@ -55,6 +63,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
     city: string;
     postalCode: string;
     country: string;
+    state?: string;
   }) => {
     setFormData((prev) => ({
       ...prev,
@@ -62,6 +71,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
       originCity: components.city,
       originPostalCode: components.postalCode,
       originCountry: components.country,
+      originStateOrProvince: components.state,
     }));
 
     // Clear related errors
@@ -71,6 +81,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
       delete newErrors.originCity;
       delete newErrors.originPostalCode;
       delete newErrors.originCountry;
+      delete newErrors.originStateOrProvince;
       return newErrors;
     });
   };
@@ -80,6 +91,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
     city: string;
     postalCode: string;
     country: string;
+    state?: string;
   }) => {
     setFormData((prev) => ({
       ...prev,
@@ -87,6 +99,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
       destinationCity: components.city,
       destinationPostalCode: components.postalCode,
       destinationCountry: components.country,
+      destinationStateOrProvince: components.state,
     }));
     // Clear related errors
     setErrors((prev) => {
@@ -114,6 +127,15 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
     if (!formData.weight || parseFloat(formData.weight) <= 0) {
       newErrors.weight = "Weight is required";
     }
+    if (!formData.originCompanyName.trim()) {
+      newErrors.originCompanyName = "Origin company name is required";
+    }
+    if (!formData.originAttention.trim()) {
+      newErrors.originAttention = "Origin attention is required";
+    }
+    if (!formData.originPhoneNumber.trim()) {
+      newErrors.originPhoneNumber = "Origin phone number is required";
+    }
     if (!formData.originAddress.trim()) {
       newErrors.originAddress = "Origin address is required";
     }
@@ -123,8 +145,20 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
     if (!formData.originPostalCode.trim()) {
       newErrors.originPostalCode = "Postal code is required";
     }
+    if (!formData.originStateOrProvince.trim()) {
+      newErrors.originStateOrProvince = "State or province is required";
+    }
     if (!formData.originCountry.trim()) {
       newErrors.originCountry = "Country is required";
+    }
+    if (!formData.destinationCompanyName.trim()) {
+      newErrors.destinationCompanyName = "Destination company name is required";
+    }
+    if (!formData.destinationAttention.trim()) {
+      newErrors.destinationAttention = "Destination attention is required";
+    }
+    if (!formData.destinationPhoneNumber.trim()) {
+      newErrors.destinationPhoneNumber = "Destination phone number is required";
     }
     if (!formData.destinationAddress.trim()) {
       newErrors.destinationAddress = "Destination address is required";
@@ -134,6 +168,9 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
     }
     if (!formData.destinationPostalCode.trim()) {
       newErrors.destinationPostalCode = "Postal code is required";
+    }
+    if (!formData.destinationStateOrProvince.trim()) {
+      newErrors.destinationStateOrProvince = "State or province is required";
     }
     if (!formData.destinationCountry.trim()) {
       newErrors.destinationCountry = "Country is required";
@@ -158,10 +195,18 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
       width: parseFloat(formData.width),
       height: parseFloat(formData.height),
       weight: parseFloat(formData.weight),
+      originCompanyName: formData.originCompanyName,
+      originAttention: formData.originAttention,
+      originStateOrProvince: formData.originStateOrProvince,
+      originPhoneNumber: formData.originPhoneNumber,
       originAddress: formData.originAddress,
       originCity: formData.originCity,
       originPostalCode: formData.originPostalCode,
       originCountry: formData.originCountry,
+      destinationCompanyName: formData.destinationCompanyName,
+      destinationAttention: formData.destinationAttention,
+      destinationStateOrProvince: formData.destinationStateOrProvince,
+      destinationPhoneNumber: formData.destinationPhoneNumber,
       destinationAddress: formData.destinationAddress,
       destinationCity: formData.destinationCity,
       destinationPostalCode: formData.destinationPostalCode,
@@ -290,6 +335,60 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
           <h3 id="ship-from-legend" className="font-semibold text-foreground">Ship From</h3>
         </div>
         <div className="space-y-4">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="originCompanyName">Company Name</Label>
+              <Input
+                id="originCompanyName"
+                placeholder="Company Name"
+                value={formData.originCompanyName}
+                onChange={(e) => handleInputChange("originCompanyName", e.target.value)}
+                className={cn(errors.originCompanyName && "border-destructive")}
+                required
+                aria-invalid={!!errors.originCompanyName}
+                aria-describedby={errors.originCompanyName ? "originCompanyName-error" : undefined}
+              />
+              {errors.originCompanyName && (
+                <p id="originCompanyName-error" role="alert" aria-live="assertive" className="text-sm text-destructive">{errors.originCompanyName}</p>
+              )}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="originAttention">Attention</Label>
+              <Input
+                id="originAttention"
+                placeholder="Sender's Name"
+                value={formData.originAttention}
+                onChange={(e) => handleInputChange("originAttention", e.target.value)}
+                className={cn(errors.originAttention && "border-destructive")}
+                required
+                aria-invalid={!!errors.originAttention}
+                aria-describedby={errors.originAttention ? "originAttention-error" : undefined}
+              />
+              {errors.originAttention && (
+                <p id="originAttention-error" role="alert" aria-live="assertive" className="text-sm text-destructive">{errors.originAttention}</p>
+              )}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="originPhoneNumber">Phone Number</Label>
+              <Input
+                id="originPhoneNumber"
+                placeholder="(123) 456-7890"
+                value={formData.originPhoneNumber}
+                onChange={(e) => handleInputChange("originPhoneNumber", e.target.value)}
+                className={cn(errors.originPhoneNumber && "border-destructive")}
+                required
+                aria-invalid={!!errors.originPhoneNumber}
+                aria-describedby={errors.originPhoneNumber ? "originPhoneNumber-error" : undefined}
+              />
+              {errors.originPhoneNumber && (
+                <p id="originPhoneNumber-error" role="alert" aria-live="assertive" className="text-sm text-destructive">{errors.originPhoneNumber}</p>
+              )}
+            </div>
+          </div>
+
           <div className="space-y-2">
             <Label htmlFor="originAddress">Street Address</Label>
             <AddressAutocomplete
@@ -340,21 +439,40 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
               )}
             </div>
           </div>
-          <div className="space-y-2">
-            <Label htmlFor="originCountry">Country</Label>
-            <Input
-              id="originCountry"
-              placeholder="Canada"
-              value={formData.originCountry}
-              onChange={(e) => handleInputChange("originCountry", e.target.value)}
-              className={cn(errors.originCountry && "border-destructive")}
-              required
-              aria-invalid={!!errors.originCountry}
-              aria-describedby={errors.originCountry ? "originCountry-error" : undefined}
-            />
-            {errors.originCountry && (
-              <p id="originCountry-error" role="alert" aria-live="assertive" className="text-sm text-destructive">{errors.originCountry}</p>
-            )}
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="originStateOrProvince">State or Province</Label>
+              <Input
+                id="originStateOrProvince"
+                placeholder="Ontario"
+                value={formData.originStateOrProvince}
+                onChange={(e) => handleInputChange("originStateOrProvince", e.target.value)}
+                className={cn(errors.originStateOrProvince && "border-destructive")}
+                required
+                aria-invalid={!!errors.originStateOrProvince}
+                aria-describedby={errors.originStateOrProvince ? "originStateOrProvince-error" : undefined}
+              />
+              {errors.originStateOrProvince && (
+                <p id="originStateOrProvince-error" role="alert" aria-live="assertive" className="text-sm text-destructive">{errors.originStateOrProvince}</p>
+              )}
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="originCountry">Country</Label>
+              <Input
+                id="originCountry"
+                placeholder="Canada"
+                value={formData.originCountry}
+                onChange={(e) => handleInputChange("originCountry", e.target.value)}
+                className={cn(errors.originCountry && "border-destructive")}
+                required
+                aria-invalid={!!errors.originCountry}
+                aria-describedby={errors.originCountry ? "originCountry-error" : undefined}
+              />
+              {errors.originCountry && (
+                <p id="originCountry-error" role="alert" aria-live="assertive" className="text-sm text-destructive">{errors.originCountry}</p>
+              )}
+            </div>
           </div>
         </div>
       </motion.div>
@@ -368,6 +486,60 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
           <h3 id="ship-to-legend" className="font-semibold text-foreground">Ship To</h3>
         </div>
         <div className="space-y-4">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="destinationCompanyName">Company Name</Label>
+              <Input
+                id="destinationCompanyName"
+                placeholder="Company Name"
+                value={formData.destinationCompanyName}
+                onChange={(e) => handleInputChange("destinationCompanyName", e.target.value)}
+                className={cn(errors.destinationCompanyName && "border-destructive")}
+                required
+                aria-invalid={!!errors.destinationCompanyName}
+                aria-describedby={errors.destinationCompanyName ? "destinationCompanyName-error" : undefined}
+              />
+              {errors.destinationCompanyName && (
+                <p id="destinationCompanyName-error" role="alert" aria-live="assertive" className="text-sm text-destructive">{errors.destinationCompanyName}</p>
+              )}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="destinationAttention">Attention</Label>
+              <Input
+                id="destinationAttention"
+                placeholder="Recipient's Name"
+                value={formData.destinationAttention}
+                onChange={(e) => handleInputChange("destinationAttention", e.target.value)}
+                className={cn(errors.destinationAttention && "border-destructive")}
+                required
+                aria-invalid={!!errors.destinationAttention}
+                aria-describedby={errors.destinationAttention ? "destinationAttention-error" : undefined}
+              />
+              {errors.destinationAttention && (
+                <p id="destinationAttention-error" role="alert" aria-live="assertive" className="text-sm text-destructive">{errors.destinationAttention}</p>
+              )}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="destinationPhoneNumber">Phone Number</Label>
+              <Input
+                id="destinationPhoneNumber"
+                placeholder="(123) 456-7890"
+                value={formData.destinationPhoneNumber}
+                onChange={(e) => handleInputChange("destinationPhoneNumber", e.target.value)}
+                className={cn(errors.destinationPhoneNumber && "border-destructive")}
+                required
+                aria-invalid={!!errors.destinationPhoneNumber}
+                aria-describedby={errors.destinationPhoneNumber ? "destinationPhoneNumber-error" : undefined}
+              />
+              {errors.destinationPhoneNumber && (
+                <p id="destinationPhoneNumber-error" role="alert" aria-live="assertive" className="text-sm text-destructive">{errors.destinationPhoneNumber}</p>
+              )}
+            </div>
+          </div>
+
           <div className="space-y-2">
             <Label htmlFor="destinationAddress">Street Address</Label>
             <AddressAutocomplete
@@ -417,6 +589,26 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
                 <p id="destinationPostalCode-error" role="alert" aria-live="assertive" className="text-sm text-destructive">{errors.destinationPostalCode}</p>
               )}
             </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="destinationStateOrProvince">State or Province</Label>
+              <Input
+                id="destinationStateOrProvince"
+                placeholder="Ontario"
+                value={formData.destinationStateOrProvince}
+                onChange={(e) => handleInputChange("destinationStateOrProvince", e.target.value)}
+                className={cn(errors.destinationStateOrProvince && "border-destructive")}
+                required
+                aria-invalid={!!errors.destinationStateOrProvince}
+                aria-describedby={errors.destinationStateOrProvince ? "destinationStateOrProvince-error" : undefined}
+              />
+              {errors.destinationStateOrProvince && (
+                <p id="destinationStateOrProvince-error" role="alert" aria-live="assertive" className="text-sm text-destructive">{errors.destinationStateOrProvince}</p>
+              )}
+            </div>
+
             <div className="space-y-2">
               <Label htmlFor="destinationCountry">Country</Label>
               <Input
