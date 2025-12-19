@@ -7,9 +7,25 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## React Compiler
+## Development
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+In order to run this project, a few variables need to be set in a local .env file
+
+```
+VITE_GOOGLE_API_KEY=<key will be shared in email>
+VITE_ENDPOINT_URL=https://restapi.appspaces.ca/rest/
+VITE_ENDPOINT_USERNAME=<username provided>
+VITE_ENDPOINT_PASSWORD=<password provided>
+```
+
+From your terminal:
+
+```sh
+npm run dev
+```
+
+This starts your app in development mode, rebuilding assets on file changes.
+
 
 ## What technologies are used for this project?
 
@@ -19,65 +35,23 @@ This project is built with:
 - TypeScript
 - React
 - shadcn-ui
+- radix-ui
 - Tailwind CSS
 
-## Expanding the ESLint configuration
+## Netlify limitations
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+This app has a working pipeline setup to automatically deploy to a netlify URL. 
+https://stirring-fairy-4b15f9.netlify.app/
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+However, this comes with a limitation I was not able to go around for the purpose of this demo. The main request is reject with a CORS error, to circumvent this I used a variation of Chrome running without web-security flags using this command on Mac OSX: 
+```
+Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --disable-web-security --user-data-dir="/tmp/chrome_dev"
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Next Steps
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Things I would love to get to: 
+- Add UnitTests to cover edge scenarios.
+- Improve UX when unexpected data is returned. 
+- For this demo, I rely on the AutoComplete service to generate the Address, some extra validation might be required if data is filled manually. 
+- I would like to get more understanding on international shipping logic.
