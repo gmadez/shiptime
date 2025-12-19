@@ -10,7 +10,8 @@ import {
   APIProvider,
 } from '@vis.gl/react-google-maps';
 
-const API_KEY = "";
+// @ts-expect-error VITE_GOOGLE_API_KEY is injected by Vite and may not be typed
+const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 
 type AppStep = "form" | "results" | "label";
 
