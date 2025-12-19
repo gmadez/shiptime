@@ -158,7 +158,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
     if (formData.destinationAttention.trim().length < 2) {
       newErrors.destinationAttention = "Attention is required";
     }
-    if (formData.originPhoneNumber.trim().length < 10) {
+    if (formData.destinationPhoneNumber.trim().length < 10) {
       newErrors.destinationPhoneNumber = "Phone number is required";
     }
     if (!formData.destinationAddress.trim()) {
