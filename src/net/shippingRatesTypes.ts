@@ -1,7 +1,11 @@
+import { Money } from "./types";
+
 export interface ShippingRate {
-  id: string;
+  carrierId: string;
   carrier: string;
+  serviceId: string;
   service: string;
+  quoteId: string;
   price: number;
   estimatedDays: string;
   logo?: string;
@@ -32,11 +36,6 @@ export interface ShippingDetails {
   shippingDate: Date;
   packageType: string;
 }
-
-export type Money = {
-  currency: string;
-  amount: number;
-};
 
 export interface Surcharge {
   price: Money;

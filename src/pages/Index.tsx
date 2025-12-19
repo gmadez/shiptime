@@ -10,7 +10,6 @@ import {
   APIProvider,
 } from '@vis.gl/react-google-maps';
 
-// @ts-expect-error VITE_GOOGLE_API_KEY is injected by Vite and may not be typed
 const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 
 type AppStep = "form" | "results" | "label";
@@ -27,6 +26,12 @@ const Index = () => {
     setShippingDetails(details);
     
     const apiRates = await getRates(details);
+    if (!apiRates) {
+      // If no rates returned show error toast
+      setIsLoading(false);
+      alert("No shipping rates found for the provided details. Please try different parameters.");
+      return;
+    }
     setRates(apiRates);
     setIsLoading(false);
     setStep("results");

@@ -51,12 +51,13 @@ export const transformShippingRates = (
   resp: ShippingRatesResponse
 ): ShippingRate[] => {
   return (resp.availableRates || []).map((r) => {
-    const id = r.quoteId || `${r.carrierId || "carrier"}-${r.serviceId || "svc"}`;
     const price = r.totalCharge?.amount ?? r.totalBeforeTaxes?.amount ?? r.baseCharge?.amount ?? 0;
     return {
-      id,
       carrier: r.carrierName || r.carrierId || "",
       service: r.serviceName || r.serviceId || "",
+      carrierId: r.carrierId,
+      serviceId: r.serviceId,
+      quoteId: r.quoteId,
       price,
       logo: "🚚",
       estimatedDays: formatEstimatedDays(r),

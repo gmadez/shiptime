@@ -128,6 +128,9 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
     if (!formData.weight || parseFloat(formData.weight) <= 0) {
       newErrors.weight = "Weight is required";
     }
+    if (formData.originCompanyName.trim().length < 2) {
+      newErrors.originCompanyName = "Company Name is required";
+    }
     if (formData.originAttention.trim().length < 2) {
       newErrors.originAttention = "Attention is required";
     }
@@ -148,6 +151,9 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
     }
     if (!formData.originCountry.trim()) {
       newErrors.originCountry = "Country is required";
+    }
+    if (!formData.destinationCompanyName.trim()) {
+      newErrors.destinationCompanyName = "Company Name is required";
     }
     if (formData.destinationAttention.trim().length < 2) {
       newErrors.destinationAttention = "Attention is required";

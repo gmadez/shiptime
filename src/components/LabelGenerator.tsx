@@ -4,6 +4,7 @@ import { ArrowLeft, Check, Download, Printer, Copy, Package } from "lucide-react
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import type { ShippingRate, ShippingDetails } from "@/net/shippingRatesTypes";
+import { getShipment } from "@/net/getShippingLabel";
 
 interface LabelGeneratorProps {
   rate: ShippingRate;
@@ -21,8 +22,7 @@ export function LabelGenerator({ rate, details, onBack, onReset }: LabelGenerato
 
   const handleGenerateLabel = async () => {
     setIsGenerating(true);
-    // Simulate label generation
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    const apiRates = await getShipment(rate, details);
     setIsGenerating(false);
     setLabelGenerated(true);
     toast({

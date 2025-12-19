@@ -1,15 +1,14 @@
-import type { ShippingRate, ShippingDetails } from "@/net/shippingRatesTypes";
+import type { ShippingRate, ShippingDetails, ShippingRatesResponse } from "@/net/shippingRatesTypes";
 import transformShippingRates from "./transformShippingRates";
 import mockShippingRates from "../data/mockShippingRates";
 import type { ShippingRequest } from "./shippingRequestTypes";
+import fetchData from "./fetchData";
 
-const endpoint = "https://restapi.appspaces.ca/rest/rates/";
+const service = "rates/";
 
 export const getRates = async (
   details: ShippingDetails
 ): Promise<ShippingRate[]> => {
-  console.log("Generating rates for details:", details);
-
   // build ShippingRequest from ShippingDetails
   const shippingRequest: ShippingRequest = {
     from: {
@@ -44,29 +43,12 @@ export const getRates = async (
     ],
     unitOfMeasurement: "IMPERIAL",
     serviceOptions: [],
-    shipDate: details.shippingDate ? details.shippingDate.toISOString() : undefined,
+    shipDate: details.shippingDate.toISOString(),
   };
 
-  try {
-    const res = await fetch(endpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(shippingRequest),
-    });
-
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
-    const data = await res.json();
-
-    const rates = transformShippingRates(data);
-    return rates.sort((a, b) => a.price - b.price);
-  } catch (err) {
-    // fallback to local mock on network error
-    // eslint-disable-next-line no-console
-    console.warn("Failed to fetch rates, using mock data:", err);
-    const rates = transformShippingRates(mockShippingRates);
-    return rates.sort((a, b) => a.price - b.price);
-  }
+  const data: ShippingRatesResponse = await fetchData(service, shippingRequest);
+  const rates = transformShippingRates(data);
+  return rates.sort((a, b) => a.price - b.price);
 };
 
 

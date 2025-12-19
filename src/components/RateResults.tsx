@@ -64,11 +64,11 @@ export function RateResults({ rates, details, onBack, onSelectRate }: RateResult
   })[0];
 
   const handleSelect = (rate: ShippingRate) => {
-    setSelectedRateId(rate.id);
+    setSelectedRateId(rate.quoteId);
   };
 
   const handleContinue = () => {
-    const selectedRate = rates.find((r) => r.id === selectedRateId);
+    const selectedRate = rates.find((r) => r.quoteId === selectedRateId);
     if (selectedRate) {
       onSelectRate(selectedRate);
     }
@@ -170,14 +170,14 @@ export function RateResults({ rates, details, onBack, onSelectRate }: RateResult
       {/* Rate Cards */}
       <div id="rates-list" className="space-y-4" role="list" aria-label="Available shipping options">
         {sortedAndFilteredRates.map((rate, index) => (
-          <div key={rate.id} role="listitem" aria-label={`${rate.carrier} ${rate.service} ${rate.estimatedDays}`}>
+          <div key={rate.quoteId} role="listitem" aria-label={`${rate.carrier} ${rate.service} ${rate.estimatedDays}`}>
             <RateCard
               rate={rate}
-              isSelected={selectedRateId === rate.id}
+              isSelected={selectedRateId === rate.quoteId}
               onSelect={() => handleSelect(rate)}
               index={index}
-              isBestValue={rate.id === bestValueRate.id}
-              isFastest={rate.id === fastestRate.id && rate.id !== bestValueRate.id}
+              isBestValue={rate.quoteId === bestValueRate.quoteId}
+              isFastest={rate.quoteId === fastestRate.quoteId && rate.quoteId !== bestValueRate.quoteId}
             />
           </div>
         ))}
@@ -198,8 +198,8 @@ export function RateResults({ rates, details, onBack, onSelectRate }: RateResult
         >
           {selectedRateId
             ? `Continue with ${
-                rates.find((r) => r.id === selectedRateId)?.carrier
-              } - $${rates.find((r) => r.id === selectedRateId)?.price.toFixed(2)}`
+                rates.find((r) => r.quoteId === selectedRateId)?.carrier
+              } - $${rates.find((r) => r.quoteId === selectedRateId)?.price.toFixed(2)}`
             : "Select a shipping option"}
         </Button>
       </motion.div>
