@@ -134,7 +134,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
     if (formData.originAttention.trim().length < 2) {
       newErrors.originAttention = "Attention is required";
     }
-    if (!formData.originPhoneNumber.trim()) {
+    if (formData.originPhoneNumber.trim().length < 10) {
       newErrors.originPhoneNumber = "Phone number is required";
     }
     if (!formData.originAddress.trim()) {
@@ -196,7 +196,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
       originCompanyName: formData.originCompanyName,
       originAttention: formData.originAttention,
       originStateOrProvince: formData.originStateOrProvince,
-      originPhoneNumber: formData.originPhoneNumber,
+      originPhoneNumber: formData.originPhoneNumber.toString().replace(/(\d{3})(\d{3})(\d{4})/, "$1 $2 $3"),
       originAddress: formData.originAddress,
       originCity: formData.originCity,
       originPostalCode: formData.originPostalCode,
@@ -204,7 +204,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
       destinationCompanyName: formData.destinationCompanyName,
       destinationAttention: formData.destinationAttention,
       destinationStateOrProvince: formData.destinationStateOrProvince,
-      destinationPhoneNumber: formData.destinationPhoneNumber,
+      destinationPhoneNumber: formData.destinationPhoneNumber.toString().replace(/(\d{3})(\d{3})(\d{4})/, "$1 $2 $3"),
       destinationAddress: formData.destinationAddress,
       destinationCity: formData.destinationCity,
       destinationPostalCode: formData.destinationPostalCode,
