@@ -25,7 +25,7 @@ const Index = () => {
     setIsLoading(true);
     setShippingDetails(details);
     
-    const apiRates = await generateMockRates(details);
+    const apiRates = await getRates(details);
     if (!apiRates) {
       // If no rates returned show error toast
       setIsLoading(false);
