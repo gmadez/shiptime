@@ -108,6 +108,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
       delete newErrors.destinationCity;
       delete newErrors.destinationPostalCode;
       delete newErrors.destinationCountry;
+      delete newErrors.destinationStateOrProvince;
       return newErrors;
     });
   };
@@ -251,7 +252,6 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
               value={formData.length}
               onChange={(e) => handleInputChange("length", e.target.value)}
               className={cn(errors.length && "border-destructive")}
-              required
               aria-invalid={!!errors.length}
               aria-describedby={errors.length ? "length-error" : undefined}
             />
@@ -269,7 +269,6 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
               value={formData.width}
               onChange={(e) => handleInputChange("width", e.target.value)}
               className={cn(errors.width && "border-destructive")}
-              required
               aria-invalid={!!errors.width}
               aria-describedby={errors.width ? "width-error" : undefined}
             />
@@ -287,7 +286,6 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
               value={formData.height}
               onChange={(e) => handleInputChange("height", e.target.value)}
               className={cn(errors.height && "border-destructive")}
-              required
               aria-invalid={!!errors.height}
               aria-describedby={errors.height ? "height-error" : undefined}
             />
@@ -316,7 +314,6 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
             value={formData.weight}
             onChange={(e) => handleInputChange("weight", e.target.value)}
             className={cn("mt-2", errors.weight && "border-destructive")}
-            required
             aria-invalid={!!errors.weight}
             aria-describedby={errors.weight ? "weight-error" : undefined}
           />
@@ -344,7 +341,6 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
                 value={formData.originCompanyName}
                 onChange={(e) => handleInputChange("originCompanyName", e.target.value)}
                 className={cn(errors.originCompanyName && "border-destructive")}
-                required
                 aria-invalid={!!errors.originCompanyName}
                 aria-describedby={errors.originCompanyName ? "originCompanyName-error" : undefined}
               />
@@ -360,7 +356,6 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
                 value={formData.originAttention}
                 onChange={(e) => handleInputChange("originAttention", e.target.value)}
                 className={cn(errors.originAttention && "border-destructive")}
-                required
                 aria-invalid={!!errors.originAttention}
                 aria-describedby={errors.originAttention ? "originAttention-error" : undefined}
               />
@@ -379,7 +374,6 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
                 value={formData.originPhoneNumber}
                 onChange={(e) => handleInputChange("originPhoneNumber", e.target.value)}
                 className={cn(errors.originPhoneNumber && "border-destructive")}
-                required
                 aria-invalid={!!errors.originPhoneNumber}
                 aria-describedby={errors.originPhoneNumber ? "originPhoneNumber-error" : undefined}
               />
@@ -414,7 +408,6 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
                 value={formData.originCity}
                 onChange={(e) => handleInputChange("originCity", e.target.value)}
                 className={cn(errors.originCity && "border-destructive")}
-                required
                 aria-invalid={!!errors.originCity}
                 aria-describedby={errors.originCity ? "originCity-error" : undefined}
               />
@@ -430,7 +423,6 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
                 value={formData.originPostalCode}
                 onChange={(e) => handleInputChange("originPostalCode", e.target.value)}
                 className={cn(errors.originPostalCode && "border-destructive")}
-                required
                 aria-invalid={!!errors.originPostalCode}
                 aria-describedby={errors.originPostalCode ? "originPostalCode-error" : undefined}
               />
@@ -448,7 +440,6 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
                 value={formData.originStateOrProvince}
                 onChange={(e) => handleInputChange("originStateOrProvince", e.target.value)}
                 className={cn(errors.originStateOrProvince && "border-destructive")}
-                required
                 aria-invalid={!!errors.originStateOrProvince}
                 aria-describedby={errors.originStateOrProvince ? "originStateOrProvince-error" : undefined}
               />
@@ -465,7 +456,6 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
                 value={formData.originCountry}
                 onChange={(e) => handleInputChange("originCountry", e.target.value)}
                 className={cn(errors.originCountry && "border-destructive")}
-                required
                 aria-invalid={!!errors.originCountry}
                 aria-describedby={errors.originCountry ? "originCountry-error" : undefined}
               />
@@ -495,7 +485,6 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
                 value={formData.destinationCompanyName}
                 onChange={(e) => handleInputChange("destinationCompanyName", e.target.value)}
                 className={cn(errors.destinationCompanyName && "border-destructive")}
-                required
                 aria-invalid={!!errors.destinationCompanyName}
                 aria-describedby={errors.destinationCompanyName ? "destinationCompanyName-error" : undefined}
               />
@@ -511,7 +500,6 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
                 value={formData.destinationAttention}
                 onChange={(e) => handleInputChange("destinationAttention", e.target.value)}
                 className={cn(errors.destinationAttention && "border-destructive")}
-                required
                 aria-invalid={!!errors.destinationAttention}
                 aria-describedby={errors.destinationAttention ? "destinationAttention-error" : undefined}
               />
@@ -530,7 +518,6 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
                 value={formData.destinationPhoneNumber}
                 onChange={(e) => handleInputChange("destinationPhoneNumber", e.target.value)}
                 className={cn(errors.destinationPhoneNumber && "border-destructive")}
-                required
                 aria-invalid={!!errors.destinationPhoneNumber}
                 aria-describedby={errors.destinationPhoneNumber ? "destinationPhoneNumber-error" : undefined}
               />
@@ -565,7 +552,6 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
                 value={formData.destinationCity}
                 onChange={(e) => handleInputChange("destinationCity", e.target.value)}
                 className={cn(errors.destinationCity && "border-destructive")}
-                required
                 aria-invalid={!!errors.destinationCity}
                 aria-describedby={errors.destinationCity ? "destinationCity-error" : undefined}
               />
@@ -581,7 +567,6 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
                 value={formData.destinationPostalCode}
                 onChange={(e) => handleInputChange("destinationPostalCode", e.target.value)}
                 className={cn(errors.destinationPostalCode && "border-destructive")}
-                required
                 aria-invalid={!!errors.destinationPostalCode}
                 aria-describedby={errors.destinationPostalCode ? "destinationPostalCode-error" : undefined}
               />
@@ -600,7 +585,6 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
                 value={formData.destinationStateOrProvince}
                 onChange={(e) => handleInputChange("destinationStateOrProvince", e.target.value)}
                 className={cn(errors.destinationStateOrProvince && "border-destructive")}
-                required
                 aria-invalid={!!errors.destinationStateOrProvince}
                 aria-describedby={errors.destinationStateOrProvince ? "destinationStateOrProvince-error" : undefined}
               />
@@ -617,7 +601,6 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
                 value={formData.destinationCountry}
                 onChange={(e) => handleInputChange("destinationCountry", e.target.value)}
                 className={cn(errors.destinationCountry && "border-destructive")}
-                required
                 aria-invalid={!!errors.destinationCountry}
                 aria-describedby={errors.destinationCountry ? "destinationCountry-error" : undefined}
               />
