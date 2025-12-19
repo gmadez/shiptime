@@ -21,7 +21,7 @@ const fetchData = async <T, P>(service: string, shippingRequest: T): Promise<P> 
     return data;
   } catch (err) {
     // eslint-disable-next-line no-console
-    console.warn("Failed to fetch rates, using mock data:", err);
+    console.warn("Failed to fetch rates", err);
     return undefined;
   }
 };

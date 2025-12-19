@@ -9,6 +9,7 @@ import { getRates, generateMockRates } from "@/net/getShippingRates";
 import {
   APIProvider,
 } from '@vis.gl/react-google-maps';
+import { useToast } from "@/hooks/use-toast";
 
 const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 
@@ -20,7 +21,7 @@ const Index = () => {
   const [shippingDetails, setShippingDetails] = useState<ShippingDetails | null>(null);
   const [rates, setRates] = useState<ShippingRate[]>([]);
   const [selectedRate, setSelectedRate] = useState<ShippingRate | null>(null);
-
+  const { toast } = useToast();
   const handleFormSubmit = async (details: ShippingDetails) => {
     setIsLoading(true);
     setShippingDetails(details);
@@ -29,7 +30,10 @@ const Index = () => {
     if (!apiRates) {
       // If no rates returned show error toast
       setIsLoading(false);
-      alert("No shipping rates found for the provided details. Please try different parameters.");
+      toast({
+        title: "Error fetching rates",
+        description: "No shipping rates found for the provided details. Please try different parameters.",
+      });
       return;
     }
     setRates(apiRates);

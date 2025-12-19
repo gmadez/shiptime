@@ -47,6 +47,9 @@ export const getRates = async (
   };
 
   const data: ShippingRatesResponse = await fetchData(service, shippingRequest);
+  if (!data) {
+    return undefined;
+  }
   const rates = transformShippingRates(data);
   return rates.sort((a, b) => a.price - b.price);
 };

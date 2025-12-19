@@ -23,6 +23,14 @@ export function LabelGenerator({ rate, details, onBack, onReset }: LabelGenerato
   const handleGenerateLabel = async () => {
     setIsGenerating(true);
     const apiRates = await getShipment(rate, details);
+    if (!apiRates) {
+      setIsGenerating(false);
+      toast({
+        title: "Error generating label",
+        description: "There was an issue generating your shipping label. Please try again.",
+      });
+      return;
+    }
     setIsGenerating(false);
     setLabelGenerated(true);
     toast({
