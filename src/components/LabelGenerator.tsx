@@ -5,6 +5,9 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import type { ShippingRate, ShippingDetails } from "@/net/shippingRatesTypes";
 import { getShipment } from "@/net/getShippingLabel";
+import { fomartCADollar } from "./utils";
+import Shipment from "@/net/shipmentTypes";
+import downloadFile from "@/net/downloadFile";
 
 interface LabelGeneratorProps {
   rate: ShippingRate;
@@ -16,34 +19,46 @@ interface LabelGeneratorProps {
 export function LabelGenerator({ rate, details, onBack, onReset }: LabelGeneratorProps) {
   const [isGenerating, setIsGenerating] = useState(false);
   const [labelGenerated, setLabelGenerated] = useState(false);
+  const [shipment, setShipment] = useState<Shipment | null>(null);
   const { toast } = useToast();
-
-  const trackingNumber = `${rate.carrier.toUpperCase().slice(0, 2)}${Date.now().toString(36).toUpperCase()}${Math.random().toString(36).slice(2, 8).toUpperCase()}`;
 
   const handleGenerateLabel = async () => {
     setIsGenerating(true);
-    const apiRates = await getShipment(rate, details);
-    if (!apiRates) {
+    const shipment = await getShipment(rate, details);
+    if (!shipment) {
       setIsGenerating(false);
       toast({
         title: "Error generating label",
         description: "There was an issue generating your shipping label. Please try again.",
+        variant: "destructive",
       });
       return;
     }
     setIsGenerating(false);
     setLabelGenerated(true);
-    toast({
-      title: "Label generated successfully!",
-      description: `Tracking number: ${trackingNumber}`,
-    });
+    setShipment(shipment);
   };
 
   const handleCopyTracking = () => {
-    navigator.clipboard.writeText(trackingNumber);
+    navigator.clipboard.writeText(shipment.trackingNumbers[0]);
     toast({
       title: "Copied to clipboard",
       description: "Tracking number has been copied",
+    });
+  };
+
+  const handleDownloadPDF = async () => {
+    const filegenerated = await downloadFile(shipment?.labelUrl || '');
+    if (filegenerated === undefined) {
+      toast({
+        title: "Error downloading label",
+        description: "There was an issue downloading your shipping label. Please try again.",
+      });
+      return;
+    }
+    toast({
+      title: "File downloaded successfully!",
+      description: "Your shipping label PDF has been downloaded.",
     });
   };
 
@@ -75,7 +90,7 @@ export function LabelGenerator({ rate, details, onBack, onReset }: LabelGenerato
             <p className="text-muted-foreground" aria-live="polite">{rate.estimatedDays}</p>
           </div>
           <div className="ml-auto text-right">
-            <div className="text-2xl font-bold text-accent">${rate.price.toFixed(2)}</div>
+            <div className="text-2xl font-bold text-accent">{fomartCADollar(rate.price)}</div>
             <div className="text-sm text-muted-foreground">total cost</div>
           </div>
         </div>
@@ -180,27 +195,10 @@ export function LabelGenerator({ rate, details, onBack, onReset }: LabelGenerato
                 </div>
               </div>
 
-              {/* Barcode Mock (decorative) */}
-              <div className="border-t-2 border-b-2 border-foreground py-4 my-4" aria-hidden>
-                <div className="flex gap-0.5 justify-center">
-                  {Array.from({ length: 40 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="bg-foreground"
-                      style={{
-                        width: Math.random() > 0.5 ? "3px" : "2px",
-                        height: "60px",
-                      }}
-                      aria-hidden
-                    />
-                  ))}
-                </div>
-              </div>
-
               <div className="text-center">
                 <div className="text-xs text-muted-foreground mb-1">TRACKING NUMBER</div>
                 <div id="tracking-number" className="font-mono font-bold text-lg text-foreground tracking-wider" aria-live="polite">
-                  {trackingNumber}
+                  {shipment?.trackingNumbers?.[0]}
                 </div>
               </div>
             </div>
@@ -212,11 +210,7 @@ export function LabelGenerator({ rate, details, onBack, onReset }: LabelGenerato
               <Copy className="h-4 w-4" aria-hidden />
               Copy Tracking
             </Button>
-            <Button variant="outline" className="gap-2">
-              <Printer className="h-4 w-4" aria-hidden />
-              <span aria-label="Print label">Print Label</span>
-            </Button>
-            <Button variant="default" className="gap-2">
+            <Button variant="default" className="gap-2" onClick={handleDownloadPDF} aria-label="Print shipping label">
               <Download className="h-4 w-4" aria-hidden />
               <span aria-label="Download PDF">Download PDF</span>
             </Button>

@@ -4,6 +4,7 @@ import { ArrowLeft, Filter, SortAsc } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { RateCard } from "./RateCard";
 import type { ShippingRate, ShippingDetails } from "@/net/shippingRatesTypes";
+import { fomartCADollar } from "./utils";
 
 interface RateResultsProps {
   rates: ShippingRate[];
@@ -73,6 +74,8 @@ export function RateResults({ rates, details, onBack, onSelectRate }: RateResult
       onSelectRate(selectedRate);
     }
   };
+
+  const selectedRate = rates.find((r) => r.quoteId === selectedRateId);
 
   return (
     <motion.div
@@ -198,8 +201,8 @@ export function RateResults({ rates, details, onBack, onSelectRate }: RateResult
         >
           {selectedRateId
             ? `Continue with ${
-                rates.find((r) => r.quoteId === selectedRateId)?.carrier
-              } - $${rates.find((r) => r.quoteId === selectedRateId)?.price.toFixed(2)}`
+                selectedRate.carrier
+              } - ${fomartCADollar(selectedRate.price)}`
             : "Select a shipping option"}
         </Button>
       </motion.div>

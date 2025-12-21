@@ -3,6 +3,7 @@ import { Check, Clock, Truck } from "lucide-react";
 import type React from "react";
 import { cn } from "@/lib/utils";
 import type { ShippingRate } from "@/net/shippingRatesTypes";
+import { fomartCADollar } from "./utils";
 
 interface RateCardProps {
   rate: ShippingRate;
@@ -13,10 +14,7 @@ interface RateCardProps {
   isFastest?: boolean;
 }
 
-const CADollar = new Intl.NumberFormat('en-CA', {
-    style: 'currency',
-    currency: 'CAD',
-});
+
 
 export function RateCard({
   rate,
@@ -41,9 +39,7 @@ export function RateCard({
       role="button"
       tabIndex={0}
       aria-pressed={isSelected}
-      aria-label={`${rate.carrier} ${rate.service}. ${rate.estimatedDays}. ${CADollar.format(
-        rate.price
-      )}`}
+      aria-label={`${rate.carrier} ${rate.service}. ${rate.estimatedDays}. ${fomartCADollar(rate.price)}`}
       className={cn(
         "relative p-5 rounded-xl border-2 cursor-pointer transition-smooth group",
         "hover:shadow-medium hover:border-accent/50",
@@ -114,7 +110,7 @@ export function RateCard({
 
         <div className="text-right pt-6">
           <div className="text-2xl font-bold text-foreground">
-            {CADollar.format(rate.price)}
+            {fomartCADollar(rate.price)}
           </div>
           <div className="text-sm text-muted-foreground">total</div>
         </div>

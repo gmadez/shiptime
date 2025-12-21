@@ -2,9 +2,9 @@ export interface Shipment {
   shipId: number;
   trackingNumbers: string[];
   labelUrl: string;
-  invoiceUrl: string;
+  invoiceUrl?: string;
   carrierTrackingUrl: string;
-  pickupConfirmation: string;
+  pickupConfirmation?: string;
   messages: string[];
 }
 
