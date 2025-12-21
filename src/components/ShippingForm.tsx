@@ -135,6 +135,9 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
       newErrors.originAttention = "Attention is required";
     }
     if (formData.originPhoneNumber.trim().length < 10) {
+      if (formData.originCountry.includes("US") || formData.originCountry.includes("CA")) {
+        formData.originPhoneNumber = formData.originPhoneNumber.toString().replace(/(\d{3})(\d{3})(\d{4})/, "$1 $2 $3");
+      }
       newErrors.originPhoneNumber = "Phone number is required";
     }
     if (!formData.originAddress.trim()) {
@@ -159,6 +162,9 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
       newErrors.destinationAttention = "Attention is required";
     }
     if (formData.destinationPhoneNumber.trim().length < 10) {
+      if (formData.destinationCountry.includes("US") || formData.destinationCountry.includes("CA")) {
+        formData.destinationPhoneNumber = formData.destinationPhoneNumber.toString().replace(/(\d{3})(\d{3})(\d{4})/, "$1 $2 $3");
+      }
       newErrors.destinationPhoneNumber = "Phone number is required";
     }
     if (!formData.destinationAddress.trim()) {
@@ -196,7 +202,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
       originCompanyName: formData.originCompanyName,
       originAttention: formData.originAttention,
       originStateOrProvince: formData.originStateOrProvince,
-      originPhoneNumber: formData.originPhoneNumber.toString().replace(/(\d{3})(\d{3})(\d{4})/, "$1 $2 $3"),
+      originPhoneNumber: formData.originPhoneNumber,
       originAddress: formData.originAddress,
       originCity: formData.originCity,
       originPostalCode: formData.originPostalCode,
@@ -204,7 +210,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
       destinationCompanyName: formData.destinationCompanyName,
       destinationAttention: formData.destinationAttention,
       destinationStateOrProvince: formData.destinationStateOrProvince,
-      destinationPhoneNumber: formData.destinationPhoneNumber.toString().replace(/(\d{3})(\d{3})(\d{4})/, "$1 $2 $3"),
+      destinationPhoneNumber: formData.destinationPhoneNumber,
       destinationAddress: formData.destinationAddress,
       destinationCity: formData.destinationCity,
       destinationPostalCode: formData.destinationPostalCode,
@@ -331,7 +337,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="originCompanyName">Company Name</Label>
+              <Label htmlFor="originCompanyName">Company Name *</Label>
               <Input
                 id="originCompanyName"
                 placeholder="Company Name"
@@ -480,7 +486,7 @@ export function ShippingForm({ onSubmit, isLoading, initialValues }: ShippingFor
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="destinationCompanyName">Company Name</Label>
+              <Label htmlFor="destinationCompanyName">Company Name *</Label>
               <Input
                 id="destinationCompanyName"
                 placeholder="Company Name"

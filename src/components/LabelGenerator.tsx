@@ -18,14 +18,15 @@ interface LabelGeneratorProps {
 
 export function LabelGenerator({ rate, details, onBack, onReset }: LabelGeneratorProps) {
   const [isGenerating, setIsGenerating] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
   const [labelGenerated, setLabelGenerated] = useState(false);
   const [shipment, setShipment] = useState<Shipment | null>(null);
   const { toast } = useToast();
 
   const handleGenerateLabel = async () => {
     setIsGenerating(true);
-    const shipment = await getShipment(rate, details);
-    if (!shipment) {
+    const { data: shipment, error } = await getShipment(rate, details);
+    if (error || !shipment) {
       setIsGenerating(false);
       toast({
         title: "Error generating label",
@@ -48,12 +49,15 @@ export function LabelGenerator({ rate, details, onBack, onReset }: LabelGenerato
   };
 
   const handleDownloadPDF = async () => {
+    setIsDownloading(true);
     const filegenerated = await downloadFile(shipment?.labelUrl, rate.carrier);
-    if (filegenerated === undefined) {
+    setIsDownloading(false);
+    if (!filegenerated) {
       toast({
         title: "Error downloading label",
-        description: "There was an issue downloading your shipping label. Please try again.",
-      });
+        description: "There was an issue downloading your shipping label. Please try again later.",
+        variant: "destructive",
+      });      
       return;
     }
     toast({
@@ -210,7 +214,7 @@ export function LabelGenerator({ rate, details, onBack, onReset }: LabelGenerato
               <Copy className="h-4 w-4" aria-hidden />
               Copy Tracking
             </Button>
-            <Button variant="default" className="gap-2" onClick={handleDownloadPDF} aria-label="Print shipping label">
+            <Button variant="default" className="gap-2" onClick={handleDownloadPDF} aria-label="Print shipping label" disabled={isDownloading}>
               <Download className="h-4 w-4" aria-hidden />
               <span aria-label="Download PDF">Download PDF</span>
             </Button>

@@ -48,6 +48,10 @@ const triggerDownload = (pdfBlob: Blob, carrier: string) => {
 };
 
 const downloadFile = async (filepath: string, carrier: string): Promise<boolean> => {
+  if (import.meta.env.VITE_DEV_API_MOCKING === "true") {
+    return false;
+  }
+
   try {
     // sanitize URL to use HTTPS
     const res = await fetch(filepath.replace("http://", "https://"), {

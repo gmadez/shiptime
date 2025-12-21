@@ -26,13 +26,14 @@ const Index = () => {
     setIsLoading(true);
     setShippingDetails(details);
     
-    const apiRates = await getShippingRates(details);
-    if (!apiRates) {
+    const { data: apiRates, error } = await getShippingRates(details);
+    if (error) {
       // If no rates returned show error toast
       setIsLoading(false);
       toast({
         title: "Error fetching rates",
-        description: "No shipping rates found for the provided details. Please try different parameters.",
+        description: error.message,
+        variant: "destructive",
       });
       return;
     }

@@ -6,10 +6,48 @@ import mockShipmenResponse from "@/data/mockShipmenResponse";
 
 const service = "shipments/";
 
+type GetShippingLabelResult = { data: Shipment | null; error: Error | null };
+
 export const getShipment = async (
   rate: ShippingRate,
   details: ShippingDetails
-): Promise<Shipment> => {
+): Promise<GetShippingLabelResult> => {
+let customsInvoce = null;
+  // International shipment placeholder data, works for CA to US.
+  if (details.originCountry !== details.destinationCountry) {
+    customsInvoce = {
+      invoiceContact: {
+        companyName: details.originCompanyName || details.originAttention,
+        streetAddress: details.originAddress,
+        city: details.originCity,
+        countryCode: details.originCountry,
+        state: details.originStateOrProvince,
+        postalCode: details.originPostalCode,
+        attention: details.originAttention,
+        phone: details.originPhoneNumber,
+        residential: true,
+        notify: true,
+      },
+      dutiesAndTaxes: {
+        dutiable: true,
+        paidBy: "CONSIGNEE",
+      },
+      currency: "CAD",
+      reasonForExport: "COMMERCIAL",
+      invoiceItems: [
+        {
+          quantity: 1,
+          code: "001002", // International shipment placeholder code
+          description: "Goods",
+          unitPrice: 100,
+          weight: details.weight,
+          origin: details.originCountry,
+          provinceOrState: details.originStateOrProvince,
+        },
+      ],
+    };
+  }
+
   // build ShippingLabelRequest from ShippingRate and ShippingDetails
   const shipmentsRequest: ShipmentsRequest = {
     rateRequest: {
@@ -50,26 +88,7 @@ export const getShipment = async (
       serviceOptions: ["APPOINTMENT"],
       shipDate: details.shippingDate.toISOString(),
       insuranceType: "SHIPTIME",
-      customsInvoice: {
-        invoiceContact: {
-          companyName: details.originCompanyName || details.originAttention,
-          streetAddress: details.originAddress,
-          city: details.originCity,
-          countryCode: details.originCountry,
-          state: details.originStateOrProvince,
-          postalCode: details.originPostalCode,
-          attention: details.originAttention,
-          phone: details.originPhoneNumber,
-          residential: true,
-          notify: true,
-        },
-        dutiesAndTaxes: {
-          dutiable: true,
-          paidBy: "CONSIGNEE",
-        },
-        currency: "CAD",
-        reasonForExport: "COMMERCIAL",
-      },
+      customsInvoice: customsInvoce,
       waitTimeLimit: 30,
     },
     carrierId: rate.carrierId,
@@ -82,11 +101,16 @@ export const getShipment = async (
       closeTime:'18:00',
     },
   };
+
+  if (import.meta.env.VITE_DEV_API_MOCKING === "true") {
+    return { data: mockShipmenResponse, error: null };
+  }
   
-  // return mockShipmenResponse;
-  
-  const data: Shipment = await fetchData(service, shipmentsRequest);
-  return data;
+  const { data: ratesResponse, error }: { data: Shipment | null; error: Error | null } = await fetchData(service, shipmentsRequest);
+  if (error) {
+    return { data: null, error };
+  }
+   return { data: ratesResponse, error: null };
 };
 
 export default getShipment;
