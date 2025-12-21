@@ -36,18 +36,18 @@ const parseBlobToPdf = async (blob: Blob): Promise<string> => {
   return base64String;
 };
 
-const triggerDownload = (pdfBlob: Blob) => {
+const triggerDownload = (pdfBlob: Blob, carrier: string) => {
   const url = window.URL.createObjectURL(pdfBlob);
   const link = document.createElement("a");
   link.href = url;
-  link.setAttribute("download", "label.pdf");
+  link.setAttribute("download", `ShipTime ${carrier} label.pdf`);
   document.body.appendChild(link);
   link.click();
   link.parentNode.removeChild(link);
   window.URL.revokeObjectURL(url);
 };
 
-const downloadFile = async (filepath: string): Promise<boolean> => {
+const downloadFile = async (filepath: string, carrier: string): Promise<boolean> => {
   try {
     // sanitize URL to use HTTPS
     const res = await fetch(filepath.replace("http://", "https://"), {
@@ -69,7 +69,7 @@ const downloadFile = async (filepath: string): Promise<boolean> => {
     const pdfBytes = base64ToUint8Array(base64String);
     const pdfBlob = new Blob([pdfBytes], { type: "application/pdf" });
 
-    triggerDownload(pdfBlob);
+    triggerDownload(pdfBlob, carrier);
     return true;
   } catch (err) {
     // eslint-disable-next-line no-console

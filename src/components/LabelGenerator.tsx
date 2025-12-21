@@ -48,7 +48,7 @@ export function LabelGenerator({ rate, details, onBack, onReset }: LabelGenerato
   };
 
   const handleDownloadPDF = async () => {
-    const filegenerated = await downloadFile(shipment?.labelUrl || '');
+    const filegenerated = await downloadFile(shipment?.labelUrl, rate.carrier);
     if (filegenerated === undefined) {
       toast({
         title: "Error downloading label",

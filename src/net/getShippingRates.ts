@@ -6,7 +6,7 @@ import fetchData from "./fetchData";
 
 const service = "rates/";
 
-export const getRates = async (
+export const getShippingRates = async (
   details: ShippingDetails
 ): Promise<ShippingRate[]> => {
   // build ShippingRequest from ShippingDetails
@@ -50,15 +50,10 @@ export const getRates = async (
   if (!data) {
     return undefined;
   }
+
+  // const rates = transformShippingRates(mockShippingRates);
   const rates = transformShippingRates(data);
   return rates.sort((a, b) => a.price - b.price);
 };
 
-
-export const generateMockRates = async (details: ShippingDetails): Promise<ShippingRate[]> => {
-  const rates = transformShippingRates(mockShippingRates);
-
-  return rates.sort((a, b) => a.price - b.price);
-};
-
-export default generateMockRates;
+export default getShippingRates;

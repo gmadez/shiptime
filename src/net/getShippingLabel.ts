@@ -1,9 +1,8 @@
 import type { ShippingRate, ShippingDetails } from "@/net/shippingRatesTypes";
-import transformShippingRates from "./transformShippingRates";
-import mockShippingRates from "../data/mockShippingRates";
 import type { ShipmentsRequest } from "./shipmentsRequestTypes";
 import Shipment from "./shipmentTypes";
 import fetchData from "./fetchData";
+import mockShipmenResponse from "@/data/mockShipmenResponse";
 
 const service = "shipments/";
 
@@ -83,9 +82,11 @@ export const getShipment = async (
       closeTime:'18:00',
     },
   };
-
-    const data: Shipment = await fetchData(service, shipmentsRequest);
-    return data;
+  
+  // return mockShipmenResponse;
+  
+  const data: Shipment = await fetchData(service, shipmentsRequest);
+  return data;
 };
 
 export default getShipment;

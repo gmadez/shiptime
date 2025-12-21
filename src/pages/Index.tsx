@@ -5,7 +5,7 @@ import { ShippingForm } from "@/components/ShippingForm";
 import { RateResults } from "@/components/RateResults";
 import { LabelGenerator } from "@/components/LabelGenerator";
 import { type ShippingDetails, type ShippingRate } from "@/net/shippingRatesTypes";
-import { getRates, generateMockRates } from "@/net/getShippingRates";
+import { getShippingRates } from "@/net/getShippingRates";
 import {
   APIProvider,
 } from '@vis.gl/react-google-maps';
@@ -26,7 +26,7 @@ const Index = () => {
     setIsLoading(true);
     setShippingDetails(details);
     
-    const apiRates = await getRates(details);
+    const apiRates = await getShippingRates(details);
     if (!apiRates) {
       // If no rates returned show error toast
       setIsLoading(false);
