@@ -51,7 +51,5 @@ Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --disable-web-secu
 ## Next Steps
 
 Things I would love to get to: 
-- Add UnitTests to cover edge scenarios.
-- Improve UX when unexpected data is returned. 
 - For this demo, I rely on the AutoComplete service to generate the Address, some extra validation might be required if data is filled manually. 
 - I would like to get more understanding on international shipping logic.

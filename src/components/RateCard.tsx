@@ -14,8 +14,6 @@ interface RateCardProps {
   isFastest?: boolean;
 }
 
-
-
 export function RateCard({
   rate,
   isSelected,

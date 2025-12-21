@@ -2,9 +2,13 @@ import React from "react";
 import { render } from "@testing-library/react";
 import { RateResults } from "../RateResults";
 import type { ShippingRate, ShippingDetails } from "@/net/shippingRatesTypes";
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
+
 
 describe("RateResults", () => {
-  it("renders correctly and matches snapshot", () => {
+  it("renders correctly and matches snapshot and has no accessibility violations", async () => {
     const mockRates: ShippingRate[] = [
       {
         carrierId: "carrier1",
@@ -42,7 +46,7 @@ describe("RateResults", () => {
       weight: 5,
       shippingDate: new Date(),
     };
-    const { asFragment } = render(
+    const { asFragment, container } = render(
       <RateResults
         rates={mockRates}
         details={mockDetails}
@@ -50,6 +54,8 @@ describe("RateResults", () => {
         onSelectRate={() => {}}
       />
     );
-    expect(asFragment()).toMatchSnapshot();
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+    expect(container).toMatchSnapshot();
   });
 });

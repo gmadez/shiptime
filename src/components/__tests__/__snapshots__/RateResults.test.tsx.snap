@@ -1,12 +1,14 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`RateResults renders correctly and matches snapshot 1`] = `
-<DocumentFragment>
+exports[`RateResults renders correctly and matches snapshot and has no accessibility violations 1`] = `
+<div>
   <div
+    animate="[object Object]"
     aria-labelledby="rates-heading"
     class="space-y-6"
+    exit="[object Object]"
+    initial="[object Object]"
     role="region"
-    style="opacity: 0; transform: translateX(20px);"
   >
     <div
       class="flex items-center justify-between"
@@ -40,7 +42,8 @@ exports[`RateResults renders correctly and matches snapshot 1`] = `
         class="text-sm text-muted-foreground"
         id="rates-heading"
       >
-        1 options found
+        1
+         options found
       </div>
     </div>
     <div
@@ -60,7 +63,11 @@ exports[`RateResults renders correctly and matches snapshot 1`] = `
           <span
             class="ml-2 font-medium text-foreground"
           >
-            Toronto, CA, A1A1A1
+            Toronto
+            , 
+            CA
+            , 
+            A1A1A1
           </span>
         </div>
         <div>
@@ -72,7 +79,11 @@ exports[`RateResults renders correctly and matches snapshot 1`] = `
           <span
             class="ml-2 font-medium text-foreground"
           >
-            New York, US, 10001
+            New York
+            , 
+            US
+            , 
+            10001
           </span>
         </div>
         <div>
@@ -84,7 +95,14 @@ exports[`RateResults renders correctly and matches snapshot 1`] = `
           <span
             class="ml-2 font-medium text-foreground"
           >
-            10"×10"×10", 5 lbs
+            10
+            "×
+            10
+            "×
+            10
+            ", 
+            5
+             lbs
           </span>
         </div>
       </div>
@@ -209,12 +227,14 @@ exports[`RateResults renders correctly and matches snapshot 1`] = `
         role="listitem"
       >
         <div
+          animate="[object Object]"
           aria-label="Carrier One Express. 2 days. $0.26"
           aria-pressed="false"
           class="relative p-5 rounded-xl border-2 cursor-pointer transition-smooth group hover:shadow-medium hover:border-accent/50 border-border bg-card"
+          initial="[object Object]"
           role="button"
-          style="opacity: 0; transform: translateY(20px);"
           tabindex="0"
+          transition="[object Object]"
         >
           <div
             aria-hidden="true"
@@ -366,8 +386,9 @@ exports[`RateResults renders correctly and matches snapshot 1`] = `
       </div>
     </div>
     <div
+      animate="[object Object]"
       class="sticky bottom-4 pt-4"
-      style="opacity: 0; transform: translateY(20px);"
+      initial="[object Object]"
     >
       <button
         class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 gradient-accent text-accent-foreground hover:opacity-90 shadow-soft hover:shadow-glow h-14 rounded-xl px-10 text-lg w-full"
@@ -377,5 +398,5 @@ exports[`RateResults renders correctly and matches snapshot 1`] = `
       </button>
     </div>
   </div>
-</DocumentFragment>
+</div>
 `;

@@ -1,14 +1,17 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`ShippingForm renders correctly and matches snapshot 1`] = `
-<DocumentFragment>
-  <form
+exports[`ShippingForm renders correctly and matches snapshot and has no accessibility violations 1`] = `
+<div>
+  <div
+    animate="visible"
     class="space-y-8"
+    initial="hidden"
   >
     <div
       aria-labelledby="package-dimensions-legend"
+      custom="0"
       role="group"
-      style="opacity: 0; transform: translateY(20px);"
+      variants="[object Object]"
     >
       <div
         class="flex items-center gap-2 mb-4"
@@ -116,8 +119,9 @@ exports[`ShippingForm renders correctly and matches snapshot 1`] = `
     </div>
     <div
       aria-labelledby="package-weight-legend"
+      custom="1"
       role="group"
-      style="opacity: 0; transform: translateY(20px);"
+      variants="[object Object]"
     >
       <div
         class="flex items-center gap-2 mb-4"
@@ -183,8 +187,9 @@ exports[`ShippingForm renders correctly and matches snapshot 1`] = `
     </div>
     <div
       aria-labelledby="ship-from-legend"
+      custom="2"
       role="group"
-      style="opacity: 0; transform: translateY(20px);"
+      variants="[object Object]"
     >
       <div
         class="flex items-center gap-2 mb-4"
@@ -388,8 +393,9 @@ exports[`ShippingForm renders correctly and matches snapshot 1`] = `
     </div>
     <div
       aria-labelledby="ship-to-legend"
+      custom="3"
       role="group"
-      style="opacity: 0; transform: translateY(20px);"
+      variants="[object Object]"
     >
       <div
         class="flex items-center gap-2 mb-4"
@@ -595,8 +601,9 @@ exports[`ShippingForm renders correctly and matches snapshot 1`] = `
     </div>
     <div
       aria-labelledby="shipping-date-legend"
+      custom="4"
       role="group"
-      style="opacity: 0; transform: translateY(20px);"
+      variants="[object Object]"
     >
       <div
         class="flex items-center gap-2 mb-4"
@@ -683,7 +690,8 @@ exports[`ShippingForm renders correctly and matches snapshot 1`] = `
       </button>
     </div>
     <div
-      style="opacity: 0; transform: translateY(20px);"
+      custom="5"
+      variants="[object Object]"
     >
       <button
         class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 gradient-accent text-accent-foreground hover:opacity-90 shadow-soft hover:shadow-glow h-12 rounded-lg px-8 text-base w-full"
@@ -715,6 +723,6 @@ exports[`ShippingForm renders correctly and matches snapshot 1`] = `
         </span>
       </button>
     </div>
-  </form>
-</DocumentFragment>
+  </div>
+</div>
 `;
