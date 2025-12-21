@@ -1,0 +1,720 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ShippingForm renders correctly and matches snapshot 1`] = `
+<DocumentFragment>
+  <form
+    class="space-y-8"
+  >
+    <div
+      aria-labelledby="package-dimensions-legend"
+      role="group"
+      style="opacity: 0; transform: translateY(20px);"
+    >
+      <div
+        class="flex items-center gap-2 mb-4"
+      >
+        <div
+          class="p-2 rounded-lg bg-primary/10"
+        >
+          <svg
+            class="lucide lucide-ruler h-5 w-5 text-primary"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"
+            />
+            <path
+              d="m14.5 12.5 2-2"
+            />
+            <path
+              d="m11.5 9.5 2-2"
+            />
+            <path
+              d="m8.5 6.5 2-2"
+            />
+            <path
+              d="m17.5 15.5 2-2"
+            />
+          </svg>
+        </div>
+        <h3
+          class="font-semibold text-foreground"
+          id="package-dimensions-legend"
+        >
+          Package Dimensions
+        </h3>
+      </div>
+      <div
+        class="grid grid-cols-3 gap-4"
+      >
+        <div
+          class="space-y-2"
+        >
+          <label
+            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            for="length"
+          >
+            Length (in) *
+          </label>
+          <input
+            aria-invalid="false"
+            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+            id="length"
+            placeholder="12"
+            step="0.1"
+            type="number"
+            value="12"
+          />
+        </div>
+        <div
+          class="space-y-2"
+        >
+          <label
+            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            for="width"
+          >
+            Width (in) *
+          </label>
+          <input
+            aria-invalid="false"
+            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+            id="width"
+            placeholder="8"
+            step="0.1"
+            type="number"
+            value="12"
+          />
+        </div>
+        <div
+          class="space-y-2"
+        >
+          <label
+            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            for="height"
+          >
+            Height (in) *
+          </label>
+          <input
+            aria-invalid="false"
+            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+            id="height"
+            placeholder="6"
+            step="0.1"
+            type="number"
+            value="12"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      aria-labelledby="package-weight-legend"
+      role="group"
+      style="opacity: 0; transform: translateY(20px);"
+    >
+      <div
+        class="flex items-center gap-2 mb-4"
+      >
+        <div
+          class="p-2 rounded-lg bg-primary/10"
+        >
+          <svg
+            class="lucide lucide-scale h-5 w-5 text-primary"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"
+            />
+            <path
+              d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"
+            />
+            <path
+              d="M7 21h10"
+            />
+            <path
+              d="M12 3v18"
+            />
+            <path
+              d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"
+            />
+          </svg>
+        </div>
+        <h3
+          class="font-semibold text-foreground"
+          id="package-weight-legend"
+        >
+          Package Weight
+        </h3>
+      </div>
+      <div
+        class="max-w-xs"
+      >
+        <label
+          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          for="weight"
+        >
+          Weight (lbs) *
+        </label>
+        <input
+          aria-invalid="false"
+          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm mt-2"
+          id="weight"
+          placeholder="5"
+          step="0.1"
+          type="number"
+          value="12"
+        />
+      </div>
+    </div>
+    <div
+      aria-labelledby="ship-from-legend"
+      role="group"
+      style="opacity: 0; transform: translateY(20px);"
+    >
+      <div
+        class="flex items-center gap-2 mb-4"
+      >
+        <div
+          class="p-2 rounded-lg bg-accent/10"
+        >
+          <svg
+            class="lucide lucide-map-pin h-5 w-5 text-accent"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
+            />
+            <circle
+              cx="12"
+              cy="10"
+              r="3"
+            />
+          </svg>
+        </div>
+        <h3
+          class="font-semibold text-foreground"
+          id="ship-from-legend"
+        >
+          Ship From
+        </h3>
+      </div>
+      <div
+        class="space-y-4"
+      >
+        <div
+          class="grid grid-cols-2 gap-4"
+        >
+          <div
+            class="space-y-2"
+          >
+            <label
+              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              for="originCompanyName"
+            >
+              Company Name *
+            </label>
+            <input
+              aria-invalid="false"
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+              id="originCompanyName"
+              maxlength="40"
+              placeholder="Company Name"
+              value="Hector"
+            />
+          </div>
+          <div
+            class="space-y-2"
+          >
+            <label
+              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              for="originAttention"
+            >
+              Attention *
+            </label>
+            <input
+              aria-invalid="false"
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+              id="originAttention"
+              placeholder="Sender's Name"
+              value="Hector"
+            />
+          </div>
+        </div>
+        <div
+          class="grid grid-cols-2 gap-4"
+        >
+          <div
+            class="space-y-2"
+          >
+            <label
+              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              for="originPhoneNumber"
+            >
+              Phone Number *
+            </label>
+            <input
+              aria-invalid="false"
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+              id="originPhoneNumber"
+              maxlength="15"
+              placeholder="123 456 7890"
+              type="tel"
+              value="647 667 4111"
+            />
+          </div>
+        </div>
+        <div
+          class="space-y-2"
+        >
+          <label
+            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            for="originAddress"
+          >
+            Street Address *
+          </label>
+          <div
+            class="relative"
+          >
+            <input
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+              id="originAddress"
+              placeholder="Start typing an address..."
+              value="5434 Sweetgrass Gate"
+            />
+          </div>
+        </div>
+        <div
+          class="grid grid-cols-2 gap-4"
+        >
+          <div
+            class="space-y-2"
+          >
+            <label
+              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              for="originCity"
+            >
+              City *
+            </label>
+            <input
+              aria-invalid="false"
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+              id="originCity"
+              maxlength="40"
+              placeholder="Toronto"
+              value="Mississauga"
+            />
+          </div>
+          <div
+            class="space-y-2"
+          >
+            <label
+              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              for="originPostalCode"
+            >
+              Postal Code *
+            </label>
+            <input
+              aria-invalid="false"
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+              id="originPostalCode"
+              maxlength="10"
+              placeholder="K1A 0B1"
+              value="L5V 2N7"
+            />
+          </div>
+        </div>
+        <div
+          class="grid grid-cols-2 gap-4"
+        >
+          <div
+            class="space-y-2"
+          >
+            <label
+              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              for="originStateOrProvince"
+            >
+              State or Province *
+            </label>
+            <input
+              aria-invalid="false"
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+              id="originStateOrProvince"
+              placeholder="Ontario"
+              value="ON"
+            />
+          </div>
+          <div
+            class="space-y-2"
+          >
+            <label
+              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              for="originCountry"
+            >
+              Country *
+            </label>
+            <input
+              aria-invalid="false"
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+              id="originCountry"
+              placeholder="Canada"
+              value="CA"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      aria-labelledby="ship-to-legend"
+      role="group"
+      style="opacity: 0; transform: translateY(20px);"
+    >
+      <div
+        class="flex items-center gap-2 mb-4"
+      >
+        <div
+          class="p-2 rounded-lg bg-success/10"
+        >
+          <svg
+            class="lucide lucide-package h-5 w-5 text-success"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"
+            />
+            <path
+              d="M12 22V12"
+            />
+            <path
+              d="m3.3 7 7.703 4.734a2 2 0 0 0 1.994 0L20.7 7"
+            />
+            <path
+              d="m7.5 4.27 9 5.15"
+            />
+          </svg>
+        </div>
+        <h3
+          class="font-semibold text-foreground"
+          id="ship-to-legend"
+        >
+          Ship To
+        </h3>
+      </div>
+      <div
+        class="space-y-4"
+      >
+        <div
+          class="grid grid-cols-2 gap-4"
+        >
+          <div
+            class="space-y-2"
+          >
+            <label
+              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              for="destinationCompanyName"
+            >
+              Company Name *
+            </label>
+            <input
+              aria-invalid="false"
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+              id="destinationCompanyName"
+              placeholder="Company Name"
+              value="Hector"
+            />
+          </div>
+          <div
+            class="space-y-2"
+          >
+            <label
+              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              for="destinationAttention"
+            >
+              Attention *
+            </label>
+            <input
+              aria-invalid="false"
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+              id="destinationAttention"
+              maxlength="40"
+              placeholder="Recipient's Name"
+              value="Hector"
+            />
+          </div>
+        </div>
+        <div
+          class="grid grid-cols-2 gap-4"
+        >
+          <div
+            class="space-y-2"
+          >
+            <label
+              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              for="destinationPhoneNumber"
+            >
+              Phone Number *
+            </label>
+            <input
+              aria-invalid="false"
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+              id="destinationPhoneNumber"
+              maxlength="15"
+              placeholder="123 456 7890"
+              type="tel"
+              value="647 667 4111"
+            />
+          </div>
+        </div>
+        <div
+          class="space-y-2"
+        >
+          <label
+            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            for="destinationAddress"
+          >
+            Street Address *
+          </label>
+          <div
+            class="relative"
+          >
+            <input
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+              id="destinationAddress"
+              placeholder="Start typing an address..."
+              value="5434 Sweetgrass Gate"
+            />
+          </div>
+        </div>
+        <div
+          class="grid grid-cols-2 gap-4"
+        >
+          <div
+            class="space-y-2"
+          >
+            <label
+              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              for="destinationCity"
+            >
+              City *
+            </label>
+            <input
+              aria-invalid="false"
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+              id="destinationCity"
+              placeholder="Vancouver"
+              value="Mississauga"
+            />
+          </div>
+          <div
+            class="space-y-2"
+          >
+            <label
+              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              for="destinationPostalCode"
+            >
+              Postal Code *
+            </label>
+            <input
+              aria-invalid="false"
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+              id="destinationPostalCode"
+              placeholder="K1A 0B1"
+              value="L5V 2N7"
+            />
+          </div>
+        </div>
+        <div
+          class="grid grid-cols-2 gap-4"
+        >
+          <div
+            class="space-y-2"
+          >
+            <label
+              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              for="destinationStateOrProvince"
+            >
+              State or Province *
+            </label>
+            <input
+              aria-invalid="false"
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+              id="destinationStateOrProvince"
+              placeholder="Ontario"
+              value="ON"
+            />
+          </div>
+          <div
+            class="space-y-2"
+          >
+            <label
+              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              for="destinationCountry"
+            >
+              Country *
+            </label>
+            <input
+              aria-invalid="false"
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+              id="destinationCountry"
+              placeholder="Canada"
+              value="CA"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      aria-labelledby="shipping-date-legend"
+      role="group"
+      style="opacity: 0; transform: translateY(20px);"
+    >
+      <div
+        class="flex items-center gap-2 mb-4"
+      >
+        <div
+          class="p-2 rounded-lg bg-warning/10"
+        >
+          <svg
+            class="lucide lucide-calendar h-5 w-5 text-warning"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8 2v4"
+            />
+            <path
+              d="M16 2v4"
+            />
+            <rect
+              height="18"
+              rx="2"
+              width="18"
+              x="3"
+              y="4"
+            />
+            <path
+              d="M3 10h18"
+            />
+          </svg>
+        </div>
+        <h3
+          class="font-semibold text-foreground"
+          id="shipping-date-legend"
+        >
+          Shipping Date
+        </h3>
+      </div>
+      <button
+        aria-controls="radix-:r0:"
+        aria-expanded="false"
+        aria-haspopup="dialog"
+        aria-label="Select shipping date"
+        class="inline-flex items-center gap-2 whitespace-nowrap rounded-lg text-sm transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 border-2 border-input bg-background hover:bg-secondary hover:text-secondary-foreground h-10 px-4 py-2 w-full max-w-xs justify-start text-left font-normal text-muted-foreground"
+        data-state="closed"
+        type="button"
+      >
+        <svg
+          class="lucide lucide-calendar mr-2 h-4 w-4"
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M8 2v4"
+          />
+          <path
+            d="M16 2v4"
+          />
+          <rect
+            height="18"
+            rx="2"
+            width="18"
+            x="3"
+            y="4"
+          />
+          <path
+            d="M3 10h18"
+          />
+        </svg>
+        Select a date
+      </button>
+    </div>
+    <div
+      style="opacity: 0; transform: translateY(20px);"
+    >
+      <button
+        class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 gradient-accent text-accent-foreground hover:opacity-90 shadow-soft hover:shadow-glow h-12 rounded-lg px-8 text-base w-full"
+        type="submit"
+      >
+        <span
+          class="flex items-center gap-2"
+        >
+          Compare Rates
+          <svg
+            class="lucide lucide-arrow-right h-4 w-4"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 12h14"
+            />
+            <path
+              d="m12 5 7 7-7 7"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </form>
+</DocumentFragment>
+`;
