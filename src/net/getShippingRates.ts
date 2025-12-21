@@ -1,4 +1,5 @@
 import type { ShippingRate, ShippingDetails, ShippingRatesResponse } from "@/net/shippingRatesTypes";
+import type { Result } from "./types";
 import transformShippingRates from "./transformShippingRates";
 import mockShippingRates from "../data/mockShippingRates";
 import type { ShippingRequest } from "./shippingRequestTypes";
@@ -6,11 +7,9 @@ import fetchData from "./fetchData";
 
 const service = "rates/";
 
-type GetShippingRatesResult = { data: ShippingRate[] | null; error: Error | null };
-
 export const getShippingRates = async (
   details: ShippingDetails
-): Promise<GetShippingRatesResult> => {
+): Promise<Result<ShippingRate[]>> => {
   let customsInvoce = null;
   // International shipment placeholder data, works for CA to US.
   if (details.originCountry !== details.destinationCountry) {

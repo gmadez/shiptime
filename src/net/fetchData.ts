@@ -1,12 +1,13 @@
+import type { Result } from "./types";
 const endpoint = import.meta.env.VITE_ENDPOINT_URL;
 const username = import.meta.env.VITE_ENDPOINT_USERNAME;
 const password = import.meta.env.VITE_ENDPOINT_PASSWORD;
 const encodedCredentials = btoa(`${username}:${password}`);
 
 
-type FetchDataResult<P> = { data: P | null; error: Error | null };
 
-const fetchData = async <T, P>(service: string, shippingRequest: T): Promise<FetchDataResult<P>> => {
+
+const fetchData = async <T, P>(service: string, shippingRequest: T): Promise<Result<P>> => {
   try {
     const res = await fetch(endpoint + service, {
       method: "POST",

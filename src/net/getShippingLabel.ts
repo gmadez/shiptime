@@ -4,14 +4,14 @@ import Shipment from "./shipmentTypes";
 import fetchData from "./fetchData";
 import mockShipmenResponse from "@/data/mockShipmenResponse";
 
-const service = "shipments/";
+import type { Result } from "./types";
 
-type GetShippingLabelResult = { data: Shipment | null; error: Error | null };
+const service = "shipments/";
 
 export const getShipment = async (
   rate: ShippingRate,
   details: ShippingDetails
-): Promise<GetShippingLabelResult> => {
+): Promise<Result<Shipment>> => {
 let customsInvoce = null;
   // International shipment placeholder data, works for CA to US.
   if (details.originCountry !== details.destinationCountry) {
